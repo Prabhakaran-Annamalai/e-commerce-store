@@ -18,22 +18,7 @@
           v-for="bestSeller in bestSellers"
           :key="bestSeller.name"
         >
-          <v-card
-            class="mx-auto best-sellers mr-1 mb-2 tw-opacity-90"
-            max-width="344"
-            :class="{ 'on-hover': hover }"
-            ><v-img :src="bestSeller.src" height="150px"> </v-img>
-            <v-card-title> {{ bestSeller.name }} </v-card-title>
-            <v-card-subtitle class="tw-text-gray-200">
-              Price :
-              <strike>&#8377;{{ bestSeller.price }}</strike> &#8377;
-              {{ bestSeller.offer }}</v-card-subtitle
-            >
-            <v-card-actions>
-              <v-btn color="orange lighten-2"> Details </v-btn>
-              <v-spacer></v-spacer>
-            </v-card-actions>
-          </v-card>
+          <BestSellerCard :product="bestSeller" />
         </v-flex>
       </v-layout>
 
@@ -46,30 +31,7 @@
       </h2>
       <v-layout row wrap class="mt-2">
         <v-flex xs6 sm6 md3 1g3 v-for="newItem in newItems" :key="newItem.name">
-          <v-card
-            class="mx-auto best-sellers mr-1 mb-2 tw-opacity-90"
-            max-width="344"
-            :class="{ 'on-hover': hover }"
-            ><v-hover>
-              <v-img slot-scope="{ hover }" :src="newItem.src" height="150px">
-                <v-expand-transition
-                  ><div
-                    v-if="hover"
-                    class="tw-h-40 d-flex transition-fast-in-fast-out"
-                  >
-                    <v-card-actions>
-                      <v-btn color="orange lighten-2 "> view &#8594; </v-btn>
-                      <v-spacer></v-spacer>
-                    </v-card-actions></div
-                ></v-expand-transition>
-              </v-img>
-            </v-hover>
-
-            <v-card-title> {{ newItem.name }} </v-card-title>
-            <v-card-subtitle class="tw-text-gray-200">
-              Price : &#8377;{{ newItem.price }}</v-card-subtitle
-            >
-          </v-card>
+          <HoverViewCard :productTwo="newItem" />
         </v-flex>
       </v-layout>
     </v-container>
@@ -93,34 +55,7 @@
           v-for="driedFruit in driedFruits"
           :key="driedFruit.name"
         >
-          <v-card
-            class="mx-auto best-sellers mr-1 mb-2 tw-opacity-90"
-            max-width="344"
-            :class="{ 'on-hover': hover }"
-            ><v-hover>
-              <v-img
-                slot-scope="{ hover }"
-                :src="driedFruit.src"
-                height="150px"
-              >
-                <v-expand-transition
-                  ><div
-                    v-if="hover"
-                    class="tw-h-40 d-flex transition-fast-in-fast-out"
-                  >
-                    <v-card-actions>
-                      <v-btn color="orange lighten-2"> View &#8594; </v-btn>
-                      <v-spacer></v-spacer>
-                    </v-card-actions></div
-                ></v-expand-transition>
-              </v-img>
-            </v-hover>
-
-            <v-card-title> {{ driedFruit.name }} </v-card-title>
-            <v-card-subtitle class="tw-text-gray-200">
-              Price : &#8377;{{ driedFruit.price }}</v-card-subtitle
-            >
-          </v-card>
+          <HoverViewCard :productTwo="driedFruit" />
         </v-flex>
       </v-layout>
     </v-container>
@@ -130,10 +65,12 @@
 
 <script>
 import Shipping from "../components/Shipping.vue";
+import BestSellerCard from "../components/BestSellerCard.vue";
+import HoverViewCard from "../components/HoverViewCard.vue";
 
 export default {
   name: "Home",
-  components: { Shipping },
+  components: { Shipping, BestSellerCard, HoverViewCard },
   data: () => ({
     bestSellers: [
       {
