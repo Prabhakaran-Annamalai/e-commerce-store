@@ -84,7 +84,7 @@
           >view all &#8594;</a
         >
       </h2>
-      <!-- <v-layout row wrap class="mt-2">
+      <v-layout row wrap class="mt-2">
         <v-flex
           xs6
           sm6
@@ -106,7 +106,6 @@
                 <v-expand-transition
                   ><div
                     v-if="hover"
-                   
                     class="tw-h-40 d-flex transition-fast-in-fast-out"
                   >
                     <v-card-actions>
@@ -123,46 +122,7 @@
             >
           </v-card>
         </v-flex>
-      </v-layout> -->
-
-      <v-row class="mt-2">
-        <v-col
-          cols="12"
-          lg="3"
-          md="3"
-          sm="6"
-          v-for="driedFruit in driedFruits"
-          :key="driedFruit.name"
-        >
-          <v-card
-            class="best-sellers tw-opacity-90"
-            :class="{ 'on-hover': hover }"
-            ><v-hover>
-              <v-img
-                slot-scope="{ hover }"
-                :src="driedFruit.src"
-                height="150px"
-              >
-                <v-expand-transition
-                  ><div
-                    v-if="hover"
-                    class="tw-h-40 d-flex transition-fast-in-fast-out"
-                  >
-                    <v-card-actions>
-                      <v-btn color="orange lighten-2"> View &#8594; </v-btn>
-                      <v-spacer></v-spacer>
-                    </v-card-actions></div
-                ></v-expand-transition>
-              </v-img>
-            </v-hover>
-
-            <v-card-title> {{ driedFruit.name }} </v-card-title>
-            <v-card-subtitle class="tw-text-gray-200">
-              Price : &#8377;{{ driedFruit.price }}</v-card-subtitle
-            >
-          </v-card>
-        </v-col>
-      </v-row>
+      </v-layout>
     </v-container>
     <v-div class="tw-mt-9"></v-div>
   </v-div>
